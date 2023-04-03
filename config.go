@@ -80,15 +80,10 @@ func (config *Config) Init(opts *Options) (err error) {
 
 	//转为参数配置
 	config.httpServerPort = opts.HttpPort
-	var serversArray []string = strings.Split(opts.ServerAddr, ",")
+	serversArray := strings.Split(opts.ServerAddr, ",")
 	for _, s := range serversArray {
 		config.httpServerAddresses = append(config.httpServerAddresses, serverAddress{
 			host: s,
-			port: opts.HttpPort,
-		})
-		config.serverAddress = append(config.serverAddress, serverAddress{
-			host: s,
-			port: opts.Port,
 		})
 	}
 
